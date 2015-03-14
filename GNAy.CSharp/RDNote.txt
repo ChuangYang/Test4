@@ -1,0 +1,220 @@
+1. Programmer's Job Every Day
+
+1.1 After Working
+
+Rebuild projects.
+Projects backup locally and remotely.
+Run test.
+
+
+1.2 Before Working
+
+Check the backups.
+Check the test.
+Rebuild projects.
+Put bugs in schedule and set them to important level.
+
+
+----------------------------------------------------------------------------------------------------
+1. Coding Style
+
+1.1 Coding Principle
+
+As far as possible without abbreviation (unless it is a popular practice).
+Coding style should be separated from the programing language and compiler. Regardless of any language and compiler, the style must make the code be readable and maintainable easily.
+Coding style should be separated from the programmer. The code should be easier to handover and maintain.
+The code and compiler should be separated. The same function can be used by the different compilers to compile successfully. The strong dependency components should be packed by using “define”.
+Don’t trust compiler, because compiler must have bugs.
+Coding principle should be followed the principles of Finite-State Machine and Defensive Programming.
+The algorithm and programing language must be separated. The same algorithm can be written by the different languages.
+Even some programming languages are not case-sensitive, but the coding style should be case-sensitive.
+
+
+1.2 Naming Rule
+
+I:   Interface
+E:   Enumeration
+D:   Delegate
+
+T:   Type or Generic
+C:   Class
+
+f:   Private field or protected field of the class.
+     The fields of class should be private, so their names should be started with "f".
+     The public members of class are the interface to contact with the other classes, so their names do not need to start with the special characteristic.
+
+S:   Structure, or the class used like the structure.
+     Structure should be as far as possible liked the simple data package (Model of MVC). Structure should be given the default value when created.
+     When the data model is complex, the programmer should use class instead of structure.
+     When the need to use structure, as far as possible, using the class to replace structure. Because the reference type is better performance and less memory usage then the value type.
+
+Ext: Extension Method
+
+m:   The parameter created in the method (exception: i, j, k…).
+i:   The input parameter of the method.
+o:   The output parameter of the method.
+io:  The parameter that has the input and output abilities, so the name of reference type should be started with "io".
+
+The names of the parameters in the predicate of for-loop should be i, j, k….
+The parameters named i, j, k… should only be used in the predicate of for-loop.
+
+
+1.3 Design Principle
+
+The different versions should be packed and managed in the same project by using “define”.
+Because warning means the potential bug, we should do as far as possible to reduce the warnings.
+There is no magic number or magic string.
+
+Class should have the methods of constructor, destructor, and reset. Class and parameter should be given the default values when created.
+Because boxing and unboxing have the high cost, we should do as far as possible to reduce boxing and unboxing the classes.
+
+The fields of class should be private, so their names should be started with "f".
+The public members of class are the interface to contact with the other classes, so their names do not need to start with the special characteristic.
+Class design should be followed the higher cohesion and looser coupling principles.
+Class design should be followed Single Responsibility Principle.
+
+Structure should be as far as possible liked the simple data package (Model of MVC). Structure should be given the default value when created.
+When the data model is complex, the programmer should use class instead of structure.
+When the need to use structure, as far as possible, using the class to replace structure. Because the reference type is better performance and less memory usage then the value type.
+
+The common functions should be static.
+The reference data of the static function should be the input parameters.
+
+The names of the parameters in the predicate of for-loop should be i, j, k….
+The parameters named i, j, k… should only be used in the predicate of for-loop.
+
+Coding principle should be followed the principles of Finite-State Machine and Defensive Programming.
+Don’t forget the comment “//TODO” when the time is not enough to design or write the good code.
+
+Implement the patterns of Guarded Suspension Pattern, Thread Pool, and Observer Pattern in the kernel of multi-thread programming first, than using these patterns to design and implement the business logic layer and application layer.
+
+
+1.4 Design Pattern
+
+Use Continuous Refactoring and modular programming. Do as far as possible to reduce coping and pasting.
+Use inheritance less and component more. Component programming is better and easier to implement modular programming.
+Use MVC (Model-View-Controller).
+The constructor of class or structure should be implemented with Factory Method Pattern.
+Use pool, container, or bucket to packet and manage the same kind of data.
+Use Observer Pattern to handle the same kind of events.
+Implement the patterns of Guarded Suspension Pattern, Thread Pool, and Observer Pattern in the kernel of multi-thread programming first, than using these patterns to design and implement the business logic layer and application layer.
+
+
+2. Test, Debug and Bug Tracking
+
+所有非私有(Non-Private)的方法，UI介面，各種裝置協定與網路協定，皆應通過FastMM4，Unit Test和有限狀態機的測試
+所有非私有(Non-Private)的方法，UI介面，各種裝置協定與網路協定，皆應觀察其CPU，Thread和Memory的使用量，和執行所需時間
+應透過Observer Pattern實現class pool，隨時統一掌握所有class的各種狀況
+
+
+3. Software Design
+
+3.1 Application Layer:
+ 
+Define & Version Control
+----------------------------------------------------------------------------------------------------
+UI Script,
+----------------------------------------------------------------------------------------------------
+UI Script Parser,
+----------------------------------------------------------------------------------------------------
+UI Drawing (Drawing/Main Thread),
+----------------------------------------------------------------------------------------------------
+UI Event,
+----------------------------------------------------------------------------------------------------
+UI Observer,
+----------------------------------------------------------------------------------------------------
+UI Function (Background Thread),
+ 
+ 
+3.2 (Business) Logic Layer:
+ 
+Define & Version Control
+----------------------------------------------------------------------------------------------------
+Connect kernel layer and application layer.
+ 
+ 
+3.3 Kernel Layer:
+ 
+Define & Version Control
+----------------------------------------------------------------------------------------------------
+Dll Manager,
+Basic TCP Server & Client,
+Basic UDP Server & Client,
+Basic HTTP Crawler,
+Basic Peer-to-Peer Network,
+----------------------------------------------------------------------------------------------------
+Time Event Observer,
+Background Task Observer,
+SQL Agent,
+TCP Connection Observer,
+UDP Connection Observer,
+Raw Socket Observer,
+----------------------------------------------------------------------------------------------------
+Environment Watcher
+(Time Watcher,
+Network Interface Watcher,
+Memory Watcher,
+Thread Watcher,
+Process Watcher),
+File Observer,
+----------------------------------------------------------------------------------------------------
+Event Observer
+Common Static Function,
+Extension Method,
+Common Interface,
+Basic Class,
+Common Structure,
+(Use Defense Programming to connect with LogObserver.Register(…))
+----------------------------------------------------------------------------------------------------
+Common Enumerator,
+Const Variable,
+Const String,
+Common Delegate,
+Common Interface,
+ 
+ 
+3.4 Log Layer:
+ 
+Define & Version Control
+----------------------------------------------------------------------------------------------------
+                 Log Script
+                     |
+                     |
+                    \|/
+              Log Config Loader
+                     |
+                     |
+                    \|/
+Log Observer --> Log Parser
+                     |
+                     |
+                    \|/
+                 Log Printer
+
+
+----------------------------------------------------------------------------------------------------
+1. DataBase Design Principle
+
+1.1 Server & Client
+
+DB應分成Server端和Client端
+
+Server端應由專人統一管理，應對人員設立不同使用權限
+Server端應用T-SQL，實現4NF正規化，欄位名稱、資料型態、資料長度都要越明確越好
+Server端DB和表在建立之初，就應估量將來資料量過大的可能性，並建立適當的索引
+Server端DB代表MVC中的M(Model)，代表資料的儲存，因此應以記憶體使用量的優化為最優先考量
+Server端DB不應代表MVC中的V(View)和C(Controller)，因此在設計時應盡量避免大量或長時間的運算
+Server端負責對眾多的Client端提供各種資料查詢服務，查詢方法應透過Stored Procedure
+
+Client端DB可由T-SQL建立，或透過程式碼建立NoSQL，皆須實現4NF正規化，NoSQL正規化時應盡量用指標索引取代數值索引
+Client端代表MVC中的V(View)和C(Controller)，應盡量使用最簡單的方法查詢Server端的資料，後在Client端做加值運算，後將資料結果呈現予使用者
+
+
+----------------------------------------------------------------------------------------------------
+1. C# Note
+
+Array is "Call by Reference".
+String is not the value type, but it is "Call by Copy".
+
+陣列複製(Array.Clone or Array.Copy)，數值型別會Call by Copy，參考型別會Call by Reference，但String會Call by Copy
+
